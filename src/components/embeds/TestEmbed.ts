@@ -6,6 +6,6 @@ module.exports = {
     return new EmbedBuilder()
       .setColor("Blue")
       .setDescription("This is  a test embed")
-      .addFields({ name: "Field title", value: "Some value" });
+      .addFields({ name: "Field title", value: "Some value field " });
   },
 };

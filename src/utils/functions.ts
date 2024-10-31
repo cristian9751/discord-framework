@@ -1,4 +1,9 @@
-import { BaseInteraction, Guild } from "discord.js";
+import {
+  BaseInteraction,
+  ChatInputCommandInteraction,
+  Guild,
+  TextChannel,
+} from "discord.js";
 import fs from "node:fs";
 import path from "node:path";
 export function loadFiles(filesPath: string, cb: Function) {
@@ -41,4 +46,17 @@ export function interactionMemberHasRole(
 
 export function checkRoles(interaction: BaseInteraction, roles: string[]) {
   roles.forEach((role) => interactionMemberHasRole(interaction, role));
+}
+
+export function sendMsgWithCommand(
+  interaction: ChatInputCommandInteraction,
+  msgContent: Object
+) {
+  let channel: TextChannel | null = null;
+  try {
+    channel = interaction.channel as TextChannel;
+    channel.send(msgContent);
+  } catch (e) {
+    return interaction.reply("You can't do this here");
+  }
 }

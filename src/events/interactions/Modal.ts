@@ -16,7 +16,13 @@ export default class Modal extends DiscordEvent {
       interaction.memberPermissions?.has("Administrator") ||
       checkRoles(interaction, roles[modal.name])
     ) {
-      await modal.execute(interaction, this.client);
+      try {
+        await modal.execute(interaction, this.client);
+      } catch (e) {
+        await interaction.reply(
+          "There is been an error when submitting the modal"
+        );
+      }
     } else {
       await interaction.reply("You dont have permission to do this");
     }

@@ -10,5 +10,8 @@ module.exports = {
     )
     .addSubcommand((subcommand) =>
       subcommand.setName("embed").setDescription("Testing embeds")
+    )
+    .addSubcommand((subcommand) =>
+      subcommand.setName("button").setDescription("Testing buttons")
     ),
 };
