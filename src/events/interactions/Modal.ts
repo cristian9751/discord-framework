@@ -14,7 +14,7 @@ export default class Modal extends DiscordEvent {
     const modal = this.client.components.get(interaction.customId);
     if (
       interaction.memberPermissions?.has("Administrator") ||
-      checkRoles(interaction, roles[modal.data.name])
+      checkRoles(interaction, roles[modal.name])
     ) {
       await modal.execute(interaction, this.client);
     } else {
